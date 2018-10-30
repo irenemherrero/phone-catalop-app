@@ -9,13 +9,12 @@ class PhoneDetailComponent extends Component {
         const {
                 title, 
                 image,
-                description,
                 bands,
                 camera,
                 color,
                 cpu,
                 dimensions,
-                os,
+                system,
                 price,
                 ram,
                 screen,
@@ -33,19 +32,22 @@ class PhoneDetailComponent extends Component {
                     <p className="phone-price">{price}</p>
                 </div>
                 <div className="detail-data-container-secondary">
+                    <h3>Detalles:</h3>
                     <p>SIM: {sim}</p>
                     <p>CPU: {cpu}</p>
-                    <p>Sistema operativo: {os}</p>
+                    <p>Sistema operativo: {system}</p>
                     <p>RAM: {ram}</p>
                     <p>Peso: {weight}</p>
                     <p>Tamaño: {dimensions}</p>
                     <p>Idiomas:</p>
-                        <ul className="list-detail">
-                        {languages.map((language, index) => {
+                        <ul className="list-detail"> 
+                        {languages !== null
+                        ? languages.map((language, index) => {
                             return(
                                 <li className="list-item-detail" key={index}>{language}</li>
                             )
-                        })}
+                        })
+                        : null}
                         </ul>
                     <p>Bandas:</p>
                         <ul className="list-detail">
