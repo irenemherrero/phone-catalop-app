@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 class App extends Component {
   constructor(props){
     super(props);
+    this.state = {
+      devicesData: []
+    }
   }
 
   componentDidMount(){
@@ -12,6 +15,9 @@ class App extends Component {
       })
       .then(json=>{
         console.log(json);
+        this.setState({
+          devicesData: json,
+        }, ()=>{console.log(this.state)})
       })
     }
   
