@@ -29,7 +29,6 @@ class PhoneDetailComponent extends Component {
                 <div className="detail-data-container-primary">
                     <h2 className="phone-title">{title}</h2>
                     <img className="phone-image" src={image} alt={title}/>
-                    <p className="phone-description">{description}</p>
                     <p className="phone-color">{color}</p>
                     <p className="phone-price">{price}</p>
                 </div>
@@ -41,34 +40,34 @@ class PhoneDetailComponent extends Component {
                     <p>Peso: {weight}</p>
                     <p>Tamaño: {dimensions}</p>
                     <p>Idiomas:</p>
-                        <ul>
+                        <ul className="list-detail">
                         {languages.map((language, index) => {
                             return(
-                                <li key={index}>{language}</li>
+                                <li className="list-item-detail" key={index}>{language}</li>
                             )
                         })}
                         </ul>
                     <p>Bandas:</p>
-                        <ul>
+                        <ul className="list-detail">
                         {bands.map((band, index) => {
                             return(
-                                <li key={index}>{band}</li>
+                                <li className="list-item-detail" key={index}>{band}</li>
                             )
                         })}
                         </ul>
                     <p>Pantalla:</p>
-                        <ul>
+                        <ul className="list-detail">
                             {screen.map((screenDetail, index) => {
                                 return(
-                                    <li key={index}>{screenDetail}</li>
+                                    <li className="list-item-detail" key={index}>{screenDetail}</li>
                                 )
                             })}
                         </ul>
                     <p>Cámara:</p>
-                        <ul>
+                        <ul className="list-detail">
                             {camera.map((cameraDetail, index) => {
                                 return(
-                                    <li key={index}>{cameraDetail}</li>
+                                    <li className="list-item-detail" key={index}>{cameraDetail}</li>
                                 )
                             })}
                         </ul>
