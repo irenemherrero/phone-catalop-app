@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PhoneListContainer from './PhoneListContainer';
+import PhoneDetailComponent from './PhoneDetailComponent';
+import { Route, Switch } from 'react-router-dom';
 
 class App extends Component {
   constructor(props){
@@ -24,7 +26,17 @@ class App extends Component {
 
   render() {
     return (
-      <PhoneListContainer phoneData={this.state.devicesData}/>
+      <Switch>
+        <Route 
+          exact path='/' 
+          render={()=> <PhoneListContainer phoneData={this.state.devicesData}/> } 
+        />
+        <Route 
+          path='/:id' 
+          render={()=> <PhoneDetailComponent phoneData={this.state.devicesData}/>}
+        />
+      </Switch>
+      
     );
   }
 }
