@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PhoneListContainer from './PhoneListContainer';
 
 class App extends Component {
   constructor(props){
@@ -14,18 +15,16 @@ class App extends Component {
         return response.json();
       })
       .then(json=>{
-        console.log(json);
         this.setState({
           devicesData: json,
-        }, ()=>{console.log(this.state)})
+        })
       })
     }
   
 
   render() {
     return (
-      <div className="App">
-      </div>
+      <PhoneListContainer phoneData={this.state.devicesData}/>
     );
   }
 }
