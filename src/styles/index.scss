@@ -12,6 +12,8 @@ body{
   height: 100vh;
 }
 
+//PhoneListContainer
+
 .container-list-phones{
   display: flex;
   flex-wrap: wrap;
@@ -41,4 +43,23 @@ body{
     color: red;
     font-weight: 700;
   }
+}
+
+//PhoneDetailComponent
+
+.detail-data-container{
+  display: flex;
+  flex-direction: row;
+  &-primary{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 20px;
+
+    &.phone-title{
+      font-size: 30px;
+      color: red;
+    }
+  }
+  
 }

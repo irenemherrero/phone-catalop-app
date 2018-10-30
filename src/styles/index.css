@@ -36,3 +36,15 @@ body {
 .phone-price {
   color: red;
   font-weight: 700; }
+
+.detail-data-container {
+  display: flex;
+  flex-direction: row; }
+  .detail-data-container-primary {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 20px; }
+    .detail-data-container-primary.phone-title {
+      font-size: 30px;
+      color: red; }
