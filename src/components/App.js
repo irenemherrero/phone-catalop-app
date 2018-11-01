@@ -3,45 +3,54 @@ import PhoneListContainer from './PhoneListContainer';
 import PhoneDetailComponent from './PhoneDetailComponent';
 import PlaceHolderComponent from './PlaceholderComponent';
 import { Route, Switch } from 'react-router-dom';
+import store from '../store';
 
 class App extends Component {
-  constructor(props){
-    super(props);
+  constructor(){
+    super();
     this.state = {
-      devicesData: null
+      phoneData: null,
     }
-  }
-
-  componentDidMount(){
-  if(JSON.parse(localStorage.getItem('savedPhonesData'))){
-    const savedPhonesData = JSON.parse(localStorage.getItem('savedPhonesData'));
-    this.setState({
-      devicesData: savedPhonesData,
+    store.subscribe(() => {
+        this.setState({
+            phoneData: store.getState().devicesData,
+        })
     })
-  } else {
+  }
+  componentDidMount(){
+  // if(JSON.parse(localStorage.getItem('savedPhonesData'))){
+  //   const savedPhonesData = JSON.parse(localStorage.getItem('savedPhonesData'));
+  //   this.setState({
+  //     devicesData: savedPhonesData,
+  //   })
+  // } else {
     fetch('https://my-json-server.typicode.com/irenemherrero/demo/devices/')
         .then(response => {
           return response.json();
         })
         .then(json=>{
-          localStorage.setItem('savedPhonesData', JSON.stringify(json));
-          this.setState({
+          console.log(json);
+          // localStorage.setItem('savedPhonesData', JSON.stringify(json));
+          store.dispatch({
+            type: "UPDATE_STATE",
             devicesData: json,
-          });
+          })
         });
-    }
+    // }
   }
   
 
   render() {
+    console.log(this.state.phoneData);
     return (
       <Switch>
         <Route 
           exact path='/' 
           render={()=> 
-            this.state.devicesData === null
+            this.state.phoneData === null
             ? <PlaceHolderComponent/>
-            : <PhoneListContainer phoneData={this.state.devicesData}   /> } 
+            : <PhoneListContainer /> 
+          } 
         />
         <Route 
           path='/:id' 

@@ -1,14 +1,26 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import store from '../store';
 
 class PhoneListContainer extends Component {
+    constructor(){
+        super();
+        this.state = {
+            phoneData: store.getState().devicesData,
+        }
+        store.subscribe(() => {
+            this.setState({
+                phoneData: store.getState().devicesData,
+            })
+        })
+    }
+
     render() { 
-        console.log(this.props);
-        const phoneData = this.props.phoneData;
-        return ( 
+        console.log(this.state.phoneData);
+            return ( 
             <ul className="container-list-phones">
-                {phoneData.map(phone => {
+                {this.state.phoneData.map(phone => {
                     return(
                         <li key={phone.id} className="phone-container">
                             <Link to={`/${phone.id}`}>
@@ -21,7 +33,6 @@ class PhoneListContainer extends Component {
                         </li>
                     )
                 })}
-            
             </ul>
          );
     }
