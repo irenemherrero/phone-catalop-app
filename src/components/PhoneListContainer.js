@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import store from '../store';
 
@@ -9,11 +8,11 @@ class PhoneListContainer extends Component {
         this.state = {
             devicesData: store.getState().devicesData,
         }
-        store.subscribe(() => {
-            this.setState({
-                devicesData: store.getState().devicesData,
-            })
-        })
+        // store.subscribe(() => {
+        //     this.setState({
+        //         devicesData: store.getState().devicesData,
+        //     })
+        // })
     }
 
     render() { 

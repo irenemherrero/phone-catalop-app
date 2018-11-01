@@ -18,25 +18,26 @@ class App extends Component {
     })
   }
   componentDidMount(){
-  // if(JSON.parse(localStorage.getItem('savedPhonesData'))){
-  //   const savedPhonesData = JSON.parse(localStorage.getItem('savedPhonesData'));
-  //   this.setState({
-  //     devicesData: savedPhonesData,
-  //   })
-  // } else {
-    fetch('https://my-json-server.typicode.com/irenemherrero/demo/devices/')
-        .then(response => {
-          return response.json();
-        })
-        .then(json=>{
-          console.log(json);
-          // localStorage.setItem('savedPhonesData', JSON.stringify(json));
-          store.dispatch({
-            type: "UPDATE_STATE",
-            devicesData: json,
+    if(JSON.parse(localStorage.getItem('savedPhonesData'))){
+      const savedPhonesData = JSON.parse(localStorage.getItem('savedPhonesData'));
+      store.dispatch({
+        type: "UPDATE_STATE",
+        devicesData: savedPhonesData,
+      })
+    } else {
+      fetch('https://my-json-server.typicode.com/irenemherrero/demo/devices/')
+          .then(response => {
+            return response.json();
           })
-        });
-    // }
+          .then(json=>{
+            console.log(json);
+            localStorage.setItem('savedPhonesData', JSON.stringify(json));
+            store.dispatch({
+              type: "UPDATE_STATE",
+              devicesData: json,
+            })
+          });
+      }
   }
   
 
