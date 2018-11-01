@@ -54,10 +54,7 @@ class App extends Component {
         />
         <Route 
           path='/:id' 
-          render={(props)=> <PhoneDetailComponent 
-            phoneData={this.state.devicesData}
-            match={props.match}
-          />}
+          render={(props)=> <PhoneDetailComponent match={props.match}/>}
         />
       </Switch>
       

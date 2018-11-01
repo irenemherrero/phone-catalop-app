@@ -1,18 +1,30 @@
 import React, { Component } from 'react';
+import store from '../store';
 
 class PhoneDetailComponent extends Component {
+    constructor(){
+        super();
+        this.state = {
+            phoneData: store.getState().devicesData,
+        }
+        store.subscribe(() => {
+            this.setState({
+                phoneData: store.getState().devicesData,
+            })
+        })
+    }
     render() { 
         const id=this.props.match.params.id;
         const idNumber=parseInt(id);
-        const phoneDataFromProps=this.props.phoneData;
-        let deviceToShow;
-            if (phoneDataFromProps !== null) {
-                deviceToShow = this.props.phoneData[idNumber];
-                localStorage.setItem('savedDevice', JSON.stringify(deviceToShow));
-            } else {
-                const savedDevice = JSON.parse(localStorage.getItem('savedDevice'))
-                deviceToShow = savedDevice;
-            }
+        const deviceToShow = this.state.phoneData[idNumber];
+        // let deviceToShow;
+        //     if (phoneDataFromProps !== null) {
+        //         deviceToShow = this.props.phoneData[idNumber];
+        //         localStorage.setItem('savedDevice', JSON.stringify(deviceToShow));
+        //     } else {
+        //         const savedDevice = JSON.parse(localStorage.getItem('savedDevice'))
+        //         deviceToShow = savedDevice;
+        //     }
         const {
                 title, 
                 image,
