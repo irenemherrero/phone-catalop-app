@@ -9,11 +9,11 @@ class App extends Component {
   constructor(){
     super();
     this.state = {
-      phoneData: null,
+      devicesData: null,
     }
     store.subscribe(() => {
         this.setState({
-            phoneData: store.getState().devicesData,
+            devicesData: store.getState().devicesData,
         })
     })
   }
@@ -41,13 +41,13 @@ class App extends Component {
   
 
   render() {
-    console.log(this.state.phoneData);
+    console.log(this.state.devicesData);
     return (
       <Switch>
         <Route 
           exact path='/' 
           render={()=> 
-            this.state.phoneData === null
+            this.state.devicesData === null
             ? <PlaceHolderComponent/>
             : <PhoneListContainer /> 
           } 

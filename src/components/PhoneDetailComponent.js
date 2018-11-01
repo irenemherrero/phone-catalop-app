@@ -16,15 +16,17 @@ class PhoneDetailComponent extends Component {
     render() { 
         const id=this.props.match.params.id;
         const idNumber=parseInt(id);
-        const deviceToShow = this.state.phoneData[idNumber];
-        // let deviceToShow;
-        //     if (phoneDataFromProps !== null) {
-        //         deviceToShow = this.props.phoneData[idNumber];
-        //         localStorage.setItem('savedDevice', JSON.stringify(deviceToShow));
-        //     } else {
-        //         const savedDevice = JSON.parse(localStorage.getItem('savedDevice'))
-        //         deviceToShow = savedDevice;
-        //     }
+        let deviceToShow;
+        console.log(this.state.phoneData);
+            if(this.state.phoneData.length !== 0){
+                console.log("Guardar datos en LS");
+                deviceToShow = this.state.phoneData[idNumber];
+                localStorage.setItem('savedDevice', JSON.stringify(deviceToShow)); 
+            } else {
+                console.log("Recuperar datos de LS");
+                const savedDevice = JSON.parse(localStorage.getItem('savedDevice'))
+                deviceToShow = savedDevice;
+            }
         const {
                 title, 
                 image,

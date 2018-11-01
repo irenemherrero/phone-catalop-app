@@ -7,20 +7,20 @@ class PhoneListContainer extends Component {
     constructor(){
         super();
         this.state = {
-            phoneData: store.getState().devicesData,
+            devicesData: store.getState().devicesData,
         }
         store.subscribe(() => {
             this.setState({
-                phoneData: store.getState().devicesData,
+                devicesData: store.getState().devicesData,
             })
         })
     }
 
     render() { 
-        console.log(this.state.phoneData);
+        console.log(this.state.devicesData);
             return ( 
             <ul className="container-list-phones">
-                {this.state.phoneData.map(phone => {
+                {this.state.devicesData.map(phone => {
                     return(
                         <li key={phone.id} className="phone-container">
                             <Link to={`/${phone.id}`}>
@@ -37,9 +37,5 @@ class PhoneListContainer extends Component {
          );
     }
 }
- 
-PhoneListContainer.propTypes = {
-    phoneData: PropTypes.array,
-};
 
 export default PhoneListContainer;
