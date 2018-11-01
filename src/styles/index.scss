@@ -18,6 +18,7 @@ body{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  padding: 5%;
 }
 
 .phone{
@@ -51,6 +52,7 @@ body{
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 5%;
   @media all and (min-width: 768px){
     flex-direction: row;
     align-items: flex-start;
@@ -60,12 +62,8 @@ body{
     display: flex;
     flex-direction: column;
     text-align: center;
-    @media all and (min-width: 768px){
-      padding-top: 5%;
-    }
     & .phone-title{
       font-size: 34px;
-      margin-top: 5%;
     }
 
     & .phone-description{
@@ -76,7 +74,27 @@ body{
     padding: 10% 5%;
     & .list-detail{
       list-style: none;
-      margin-left: 15px;
+      padding: 10px;
+    }
+    & .longline{
+      word-break: break-all;
+    }
+  }
+}
+
+//PlaceholderComponent
+
+.placeholder{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  &-spinner{
+    width: 100px;
+    height: 100px;
+    @media all and (min-width: 768px){
+      width: 200px;
+      height: 200px;
     }
   }
 }

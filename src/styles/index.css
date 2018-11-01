@@ -13,7 +13,8 @@ body {
 .container-list-phones {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; }
+  justify-content: center;
+  padding: 5%; }
 
 .phone-container {
   width: 300px;
@@ -40,7 +41,8 @@ body {
 .detail-data-container {
   display: flex;
   flex-direction: column;
-  align-items: center; }
+  align-items: center;
+  padding: 5%; }
   @media all and (min-width: 768px) {
     .detail-data-container {
       flex-direction: row;
@@ -49,16 +51,27 @@ body {
     display: flex;
     flex-direction: column;
     text-align: center; }
-    @media all and (min-width: 768px) {
-      .detail-data-container-primary {
-        padding-top: 5%; } }
     .detail-data-container-primary .phone-title {
-      font-size: 34px;
-      margin-top: 5%; }
+      font-size: 34px; }
     .detail-data-container-primary .phone-description {
       margin: 5%; }
   .detail-data-container-secondary {
     padding: 10% 5%; }
     .detail-data-container-secondary .list-detail {
       list-style: none;
-      margin-left: 15px; }
+      padding: 10px; }
+    .detail-data-container-secondary .longline {
+      word-break: break-all; }
+
+.placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; }
+  .placeholder-spinner {
+    width: 100px;
+    height: 100px; }
+    @media all and (min-width: 768px) {
+      .placeholder-spinner {
+        width: 200px;
+        height: 200px; } }

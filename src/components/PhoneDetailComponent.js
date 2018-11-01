@@ -4,8 +4,15 @@ class PhoneDetailComponent extends Component {
     render() { 
         const id=this.props.match.params.id;
         const idNumber=parseInt(id);
-        console.log(this.props.phoneData[idNumber]);
-        console.log(id);
+        const phoneDataFromProps=this.props.phoneData;
+        let deviceToShow;
+            if (phoneDataFromProps !== null) {
+                deviceToShow = this.props.phoneData[idNumber];
+                localStorage.setItem('savedDevice', JSON.stringify(deviceToShow));
+            } else {
+                const savedDevice = JSON.parse(localStorage.getItem('savedDevice'))
+                deviceToShow = savedDevice;
+            }
         const {
                 title, 
                 image,
@@ -21,7 +28,7 @@ class PhoneDetailComponent extends Component {
                 sim,
                 weight,
                 languages,
-            }=this.props.phoneData[id];
+            }=deviceToShow;
 
         return ( 
             <div className="detail-data-container">
@@ -50,7 +57,7 @@ class PhoneDetailComponent extends Component {
                         : null}
                         </ul>
                     <p>Bandas:</p>
-                        <ul className="list-detail">
+                        <ul className="list-detail longline">
                         {bands.map((band, index) => {
                             return(
                                 <li className="list-item-detail" key={index}>{band}</li>
