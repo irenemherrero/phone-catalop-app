@@ -6,59 +6,53 @@ import { Route, Switch } from 'react-router-dom';
 import store from '../store';
 
 class App extends Component {
-  constructor(){
+  constructor() {
     super();
     this.state = {
       devicesData: null,
     }
     store.subscribe(() => {
-        this.setState({
-            devicesData: store.getState().devicesData,
-        })
-    })
+      this.setState({
+        devicesData: store.getState().devicesData,
+      });
+    });
   }
-  componentDidMount(){
-    if(JSON.parse(localStorage.getItem('savedPhonesData'))){
-      const savedPhonesData = JSON.parse(localStorage.getItem('savedPhonesData'));
-      store.dispatch({
-        type: "UPDATE_STATE",
-        devicesData: savedPhonesData,
+
+  componentDidMount() {
+    fetch('https://my-json-server.typicode.com/irenemherrero/demo/devices/')
+      .then(response => {
+        return response.json();
       })
-    } else {
-      fetch('https://my-json-server.typicode.com/irenemherrero/demo/devices/')
-          .then(response => {
-            return response.json();
-          })
-          .then(json=>{
-            console.log(json);
-            localStorage.setItem('savedPhonesData', JSON.stringify(json));
-            store.dispatch({
-              type: "UPDATE_STATE",
-              devicesData: json,
-            })
-          });
-      }
+      .then(json => {
+        localStorage.setItem('savedPhonesData', JSON.stringify(json));
+        store.dispatch({
+          type: "UPDATE_STATE",
+          devicesData: json,
+        });
+      })
+      .catch(error=>{
+          console.log(`Ha sucedido un error: ${error}`);
+      });
   }
-  
 
   render() {
-    console.log(this.state.devicesData);
     return (
       <Switch>
-        <Route 
-          exact path='/' 
-          render={()=> 
+        <Route
+          exact path='/'
+          render={() =>
             this.state.devicesData === null
-            ? <PlaceHolderComponent/>
-            : <PhoneListContainer /> 
-          } 
+              ? <PlaceHolderComponent />
+              : <PhoneListContainer />
+          }
         />
-        <Route 
-          path='/:id' 
-          render={(props)=> <PhoneDetailComponent match={props.match}/>}
+        <Route
+          path='/:id'
+          render={(props) =>
+            <PhoneDetailComponent match={props.match} />
+          }
         />
       </Switch>
-      
     );
   }
 }

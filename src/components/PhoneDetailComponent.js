@@ -7,11 +7,11 @@ class PhoneDetailComponent extends Component {
         this.state = {
             phoneData: store.getState().devicesData,
         }
-        // store.subscribe(() => {
-        //     this.setState({
-        //         phoneData: store.getState().devicesData,
-        //     })
-        // })
+        store.subscribe(() => {
+            this.setState({
+                phoneData: store.getState().devicesData,
+            })
+        })
     }
     render() { 
         const id=this.props.match.params.id;
