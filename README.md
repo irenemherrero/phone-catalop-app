@@ -14,7 +14,7 @@ $ npm install --save-dev node-sass-chokidar
 $ npm install --save-dev npm-run-all
 $ npm install —save react-router-dom
 
-## DATABASE
+## Database
 
 The database is a demo made with: 
 https://my-json-server.typicode.com/typicode/demo
