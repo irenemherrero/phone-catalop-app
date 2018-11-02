@@ -8,11 +8,11 @@ Clone the repository: git clone https://github.com/irenemherrero/phone-catalop-a
 
 ## Install dependencies
 
-$ npm install
-$ npm install --save redux
-$ npm install --save-dev node-sass-chokidar
-$ npm install --save-dev npm-run-all
-$ npm install —save react-router-dom
+- $ npm install
+- $ npm install --save redux
+- $ npm install --save-dev node-sass-chokidar
+- $ npm install --save-dev npm-run-all
+- $ npm install —save react-router-dom
 
 ## Database
 
