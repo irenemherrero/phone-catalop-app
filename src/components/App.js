@@ -30,8 +30,8 @@ class App extends Component {
           devicesData: json,
         });
       })
-      .catch(error=>{
-          console.log(`Ha sucedido un error: ${error}`);
+      .catch(error => {
+        console.log(`Ha sucedido un error: ${error}`);
       });
   }
 
