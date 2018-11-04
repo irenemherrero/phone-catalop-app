@@ -19,7 +19,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('http://my-json-server.typicode.com/irenemherrero/demo/devices/')
+    fetch('https://my-json-server.typicode.com/irenemherrero/demo/devices/')
       .then(response => {
         return response.json();
       })
