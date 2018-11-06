@@ -11,12 +11,20 @@ class App extends Component {
     this.state = {
       devicesData: null,
     }
+
+    //Suscribing to update App state when data has been saved in store after fetch.
+
     store.subscribe(() => {
       this.setState({
         devicesData: store.getState().devicesData,
       });
     });
   }
+
+  //Fetching data from server
+  //Saving data in local storage (not to call unnecesary times to server)
+  //Save data from server in store
+  //Catching errors
 
   componentDidMount() {
     fetch('https://my-json-server.typicode.com/irenemherrero/demo/devices/')
@@ -34,6 +42,8 @@ class App extends Component {
         console.log(`Ha sucedido un error: ${error}`);
       });
   }
+
+  //Routing to have different routes in the SPA
 
   render() {
     return (

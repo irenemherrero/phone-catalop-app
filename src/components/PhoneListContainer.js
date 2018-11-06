@@ -8,11 +8,6 @@ class PhoneListContainer extends Component {
     this.state = {
       devicesData: store.getState().devicesData
     };
-    store.subscribe(() => {
-      this.setState({
-        devicesData: store.getState().devicesData
-      });
-    });
   }
 
   render() {

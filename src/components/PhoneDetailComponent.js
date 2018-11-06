@@ -7,12 +7,10 @@ class PhoneDetailComponent extends Component {
         this.state = {
             phoneData: store.getState().devicesData,
         }
-        store.subscribe(() => {
-            this.setState({
-                phoneData: store.getState().devicesData,
-            });
-        });
     }
+
+    //Choosing data to show (from LocalStorage if available or from store)
+
     render() {
         const id = this.props.match.params.id;
         const idNumber = parseInt(id);
